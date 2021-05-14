@@ -8,7 +8,7 @@
 
 Программа парсит сайт sothebys.com, полученные данные записывает в .json файлы
 
-[index.js](../blob/main/index.json)
+[index.js](../blob/main/index.js)
 
 ## Очистка данных
 
