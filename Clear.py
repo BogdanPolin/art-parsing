@@ -7,6 +7,24 @@ import csv
 from datetime import datetime, date, time, timedelta
 months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december']
 
+def read_json(filename):
+    return json.loads(open(filename).read())
+def write_csv(data,filename):
+    qwe = 0
+    with open(filename, 'w+') as outf:
+      for i in range(len(data)):
+          if(data[i]['link'].find('html') != -1):
+            writer = csv.DictWriter(outf, data[i].keys())
+            qwe = 1
+            break
+      if(qwe == 0):
+        return
+      writer.writeheader()
+      for row in data:
+        if(row['link'].find('html') != -1):
+          writer.writerow(row)
+write_csv(read_json('Lots.json'), 'Input.csv')
+
 with open('Input.csv') as f:
   reader = csv.DictReader(f)
   lots = list(reader)
